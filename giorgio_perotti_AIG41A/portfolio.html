@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <div class="logo">My Portfolio</div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Me</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <h1>My Work</h1>
+    <p>Here's a collection of projects I've worked on. Each project showcases different skills and technologies.</p>
+
+    <div class="portfolio-items">
+      <div class="project">
+        <img src="images/exommerce.png" alt="E-commerce platform">
+        <div class="project-info">
+          <h3>E-commerce Platform</h3>
+          <p>A responsive online store built with HTML, CSS, and JavaScript.</p>
+          <button class="view-more-btn">View More</button>
+          <div class="more-details" style="display: none;">
+            <p>This project uses a fully responsive layout, a cart system, and user authentication. I learned about API calls and DOM manipulation while building it.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="project">
+        <img src="images/fitnessapp.png" alt="Fitness App UI Design">
+        <div class="project-info">
+          <h3>Fitness App UI Design</h3>
+          <p>A mobile application for tracking fitness goals and progress.</p>
+          <button class="view-more-btn">View More</button>
+          <div class="more-details" style="display: none;">
+            <p>Developed the UI in Figma and built the prototype using React Native. It tracks user workouts, diet, and progress over time.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="project">
+        <img src="images/techonolies.jpg" alt="Another Project">
+        <div class="project-info">
+          <h3>Another Project</h3>
+          <p>A brief description of the project’s goals and technologies used.</p>
+          <button class="view-more-btn">View More</button>
+          <div class="more-details" style="display: none;">
+            <p>This project is a personal blog platform where I explored Node.js for server-side scripting and a MongoDB database for storing posts.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>2025 Giorgio Perotti</p>
+  </footer>
+
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span id="closeModal" class="close-button">&times;</span>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById('modal');
+    const modalBody = document.getElementById('modal-body');
+    const closeModal = document.getElementById('closeModal');
+
+    document.querySelectorAll('.view-more-btn').forEach(button => {
+      button.addEventListener('click', function() {
+        const extraInfo = this.parentElement.querySelector('.more-details').innerHTML;
+        modalBody.innerHTML = extraInfo;
+        modal.style.display = 'block';
+      });
+    });
+
+    closeModal.addEventListener('click', function() {
+      modal.style.display = 'none';
+    });
+
+    window.addEventListener('click', function(event) {
+      if (event.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>

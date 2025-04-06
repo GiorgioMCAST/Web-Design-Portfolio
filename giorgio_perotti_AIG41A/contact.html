@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact</title>
+  <link rel="stylesheet" href="style/style.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <div class="logo">My Portfolio</div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Me</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  
+  <main>
+    <h1 id="contact-h1">Contact</h1>
+    <div class="contact-form-container">
+      <form id="contactForm">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" placeholder="Your name">
+          <div id="nameError" class="error-message"></div>
+        </div>
+        
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" placeholder="Your email address">
+          <div id="emailError" class="error-message"></div>
+        </div>
+        
+        <div class="form-group">
+          <label for="phone">Phone (+356 #### ####):</label>
+          <input type="text" id="phone" name="phone" placeholder="+356 1234 5678">
+          <div id="phoneError" class="error-message"></div>
+        </div>
+        
+        <div class="form-group">
+          <label for="message">Message (min 10 characters):</label>
+          <textarea id="message" name="message" placeholder="Your message"></textarea>
+          <div id="messageError" class="error-message"></div>
+        </div>
+        
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  </main>
+  
+  <footer>
+    <p>2025 Giorgio Perotti</p>
+  </footer>
+  
+  <script>
+    $(document).ready(function() {
+      $('#contactForm').submit(function(event) {
+        event.preventDefault();
+        $('.error-message').text('');
+        
+        const name = $('#name').val().trim();
+        const email = $('#email').val().trim();
+        const phone = $('#phone').val().trim();
+        const message = $('#message').val().trim();
+        
+        const emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
+        const phoneRegex = /^\+356\s?\d{4}\s?\d{4}$/;
+        
+        let isValid = true;
+        
+        if (name === '') {
+          $('#nameError').text('Please enter your name.');
+          isValid = false;
+        }
+        
+        if (email === '' || !emailRegex.test(email)) {
+          $('#emailError').text('Please enter a valid email address.');
+          isValid = false;
+        }
+        
+        if (phone === '' || !phoneRegex.test(phone)) {
+          $('#phoneError').text('Please enter a valid phone number in the format +356 1234 5678.');
+          isValid = false;
+        }
+        
+        if (message.length < 10) {
+          $('#messageError').text('Message must be at least 10 characters long.');
+          isValid = false;
+        }
+        
+        if (isValid) {
+          alert('Thank you for your message!');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

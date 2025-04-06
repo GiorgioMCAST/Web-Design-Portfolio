@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About Me</title>
+  <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <div class="logo">My Portfolio</div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Me</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <h1>About Me</h1>
+    <p>Hi, my name is Giorgio Perotti. I am a student at MCAST, doing an Advanced Diploma in IT.</p>
+
+    <button id="surpriseMeBtn">Surprise Me</button>
+
+    <div id="funFact" style="margin-top: 10px; font-weight: bold;"></div>
+  </main>
+
+  <footer>
+    <p>2025 Giorgio Perotti</p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const funFacts = [
+        "I love experimenting with new JavaScript frameworks.",
+        "My favorite food is sushi.",
+        "I once built a website in under 24 hours.",
+        "I'm learning how to play the guitar.",
+        "I enjoy hiking and exploring nature."
+      ];
+
+      const surpriseMeBtn = document.getElementById('surpriseMeBtn');
+      const funFactDiv = document.getElementById('funFact');
+
+      surpriseMeBtn.addEventListener('click', function() {
+        const randomIndex = Math.floor(Math.random() * funFacts.length);
+        funFactDiv.textContent = funFacts[randomIndex];
+      });
+    });
+  </script>
+</body>
+</html>
